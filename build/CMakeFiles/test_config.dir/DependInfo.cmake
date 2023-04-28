@@ -4,9 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/nowcoder/Tao/tao/config.cpp" "/home/nowcoder/Tao/build/CMakeFiles/tao.dir/tao/config.cpp.o"
-  "/home/nowcoder/Tao/tao/log.cpp" "/home/nowcoder/Tao/build/CMakeFiles/tao.dir/tao/log.cpp.o"
-  "/home/nowcoder/Tao/tao/util.cpp" "/home/nowcoder/Tao/build/CMakeFiles/tao.dir/tao/util.cpp.o"
+  "/home/nowcoder/Tao/tests/test_config.cpp" "/home/nowcoder/Tao/build/CMakeFiles/test_config.dir/tests/test_config.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -16,6 +14,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
+  "/home/nowcoder/Tao/build/CMakeFiles/tao.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

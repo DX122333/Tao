@@ -15,6 +15,7 @@
 #include<stdarg.h>
 #include<map>
 #include "singleton.h"
+#include "util.h"
 
 /**
  * @brief 使用流式方式将日志级别level的日志写入到logger
@@ -263,6 +264,7 @@ public:
     Logger::ptr getLogger(const std::string& name);
 
     void init();
+    Logger::ptr getRoot() const {return m_root;}
 private:
     std::map<std::string, Logger::ptr> m_loggers;
     Logger::ptr m_root;

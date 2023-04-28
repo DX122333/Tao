@@ -127,6 +127,19 @@ tao/fast:
 .PHONY : tao/fast
 
 #=============================================================================
+# Target rules for targets named test_config
+
+# Build rule for target.
+test_config: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_config
+.PHONY : test_config
+
+# fast build rule for target.
+test_config/fast:
+	$(MAKE) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/build
+.PHONY : test_config/fast
+
+#=============================================================================
 # Target rules for targets named test
 
 # Build rule for target.
@@ -138,6 +151,33 @@ test: cmake_check_build_system
 test/fast:
 	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
 .PHONY : test/fast
+
+tao/config.o: tao/config.cpp.o
+
+.PHONY : tao/config.o
+
+# target to build an object file
+tao/config.cpp.o:
+	$(MAKE) -f CMakeFiles/tao.dir/build.make CMakeFiles/tao.dir/tao/config.cpp.o
+.PHONY : tao/config.cpp.o
+
+tao/config.i: tao/config.cpp.i
+
+.PHONY : tao/config.i
+
+# target to preprocess a source file
+tao/config.cpp.i:
+	$(MAKE) -f CMakeFiles/tao.dir/build.make CMakeFiles/tao.dir/tao/config.cpp.i
+.PHONY : tao/config.cpp.i
+
+tao/config.s: tao/config.cpp.s
+
+.PHONY : tao/config.s
+
+# target to generate assembly for a file
+tao/config.cpp.s:
+	$(MAKE) -f CMakeFiles/tao.dir/build.make CMakeFiles/tao.dir/tao/config.cpp.s
+.PHONY : tao/config.cpp.s
 
 tao/log.o: tao/log.cpp.o
 
@@ -220,6 +260,33 @@ tests/test.cpp.s:
 	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/test.cpp.s
 .PHONY : tests/test.cpp.s
 
+tests/test_config.o: tests/test_config.cpp.o
+
+.PHONY : tests/test_config.o
+
+# target to build an object file
+tests/test_config.cpp.o:
+	$(MAKE) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/tests/test_config.cpp.o
+.PHONY : tests/test_config.cpp.o
+
+tests/test_config.i: tests/test_config.cpp.i
+
+.PHONY : tests/test_config.i
+
+# target to preprocess a source file
+tests/test_config.cpp.i:
+	$(MAKE) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/tests/test_config.cpp.i
+.PHONY : tests/test_config.cpp.i
+
+tests/test_config.s: tests/test_config.cpp.s
+
+.PHONY : tests/test_config.s
+
+# target to generate assembly for a file
+tests/test_config.cpp.s:
+	$(MAKE) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/tests/test_config.cpp.s
+.PHONY : tests/test_config.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -229,7 +296,11 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... tao"
+	@echo "... test_config"
 	@echo "... test"
+	@echo "... tao/config.o"
+	@echo "... tao/config.i"
+	@echo "... tao/config.s"
 	@echo "... tao/log.o"
 	@echo "... tao/log.i"
 	@echo "... tao/log.s"
@@ -239,6 +310,9 @@ help:
 	@echo "... tests/test.o"
 	@echo "... tests/test.i"
 	@echo "... tests/test.s"
+	@echo "... tests/test_config.o"
+	@echo "... tests/test_config.i"
+	@echo "... tests/test_config.s"
 .PHONY : help
 
 

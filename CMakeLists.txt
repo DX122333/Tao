@@ -7,6 +7,7 @@ set(CMAKE_CXX_FLAG "$ENV{CXXFLAGS} -rdynamic -O0 -ggdb -std=c++11 -Wall -Wno-dep
 set(LIB_SRC
     tao/log.cpp
     tao/util.cpp
+    tao/config.cpp
     )
 
 add_library(tao SHARED ${LIB_SRC})
@@ -16,6 +17,10 @@ add_library(tao SHARED ${LIB_SRC})
 add_executable(test tests/test.cpp)
 add_dependencies(test tao)
 target_link_libraries(test tao)
+
+add_executable(test_config tests/test_config.cpp)
+add_dependencies(test_config tao)
+target_link_libraries(test_config tao)
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)

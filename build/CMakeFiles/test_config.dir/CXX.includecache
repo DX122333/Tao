@@ -6,6 +6,18 @@
 
 #IncludeRegexTransform: 
 
+/home/nowcoder/Tao/tao/config.h
+memory
+-
+string
+-
+sstream
+-
+boost/lexical_cast.hpp
+-
+log.h
+/home/nowcoder/Tao/tao/log.h
+
 /home/nowcoder/Tao/tao/log.h
 string
 -
@@ -52,11 +64,9 @@ sys/syscall.h
 stdio.h
 -
 
-/home/nowcoder/Tao/tests/test.cpp
-iostream
--
+/home/nowcoder/Tao/tests/test_config.cpp
+../tao/config.h
+/home/nowcoder/Tao/tao/config.h
 ../tao/log.h
 /home/nowcoder/Tao/tao/log.h
-../tao/util.h
-/home/nowcoder/Tao/tao/util.h
 
