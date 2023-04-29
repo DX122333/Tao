@@ -8,7 +8,8 @@ include_directories(.)
 include_directories(/usr/local/include)
 link_directories(/usr/local/lib)
 
-find_library(YAMLCPP libyaml-cpp.a)
+find_library(YAMLCPP yaml-cpp)
+message("***", ${YAMLCPP})
 
 set(LIB_SRC
     tao/log.cpp
@@ -22,11 +23,11 @@ add_library(tao SHARED ${LIB_SRC})
 
 add_executable(test tests/test.cpp)
 add_dependencies(test tao)
-target_link_libraries(test tao)
+target_link_libraries(test tao ${YAMLCPP})
 
 add_executable(test_config tests/test_config.cpp)
 add_dependencies(test_config tao)
-target_link_libraries(test_config tao -L/usr/local/lib -lyaml-cpp)
+target_link_libraries(test_config tao ${YAMLCPP})
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)

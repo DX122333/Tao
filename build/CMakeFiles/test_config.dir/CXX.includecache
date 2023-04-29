@@ -15,8 +15,12 @@ sstream
 -
 boost/lexical_cast.hpp
 -
+list
+-
 log.h
 /home/nowcoder/Tao/tao/log.h
+yaml-cpp/yaml.h
+/home/nowcoder/Tao/tao/yaml-cpp/yaml.h
 
 /home/nowcoder/Tao/tao/log.h
 string

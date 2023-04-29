@@ -5,7 +5,9 @@
 #include<string>
 #include<sstream> //序列化
 #include<boost/lexical_cast.hpp> //内存转化
+#include<list>
 #include"log.h"
+#include"yaml-cpp/yaml.h"
 
 namespace tao{
 
@@ -15,6 +17,7 @@ public:
     ConfigVarBase(const std::string& name, const std::string& description)
         :m_name(name)
         ,m_description(description) {
+            std::transform(m_name.begin(), m_name.end(), m_name.begin(), ::tolower);
     }
     virtual ~ConfigVarBase(){}
 
@@ -86,7 +89,7 @@ public:
                 return tmp;
             }
 
-            if(name.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ._0123456789") != std::string::npos){
+            if(name.find_first_not_of("abcdefghijklmnopqrstuvwxyz._0123456789") != std::string::npos){
                 TAO_LOG_ERROR(TAO_LOG_ROOT())<<"Lookup name invalid "<<name;
                 throw std::invalid_argument(name);
             }
@@ -106,6 +109,8 @@ public:
 
         return std::dynamic_pointer_cast<ConfigVar<T> >(it->second);
     }
+    static void LoadFromYaml(const YAML::Node& root);
+    static ConfigVarBase::ptr LookupBase(const std::string& name);
 private:
     static ConfigVarMap s_datas;
 };

@@ -28,15 +28,30 @@ void print_yaml(const YAML::Node& node, int level){
     }
 }
 
+
 void test_yaml(){
     YAML::Node root = YAML::LoadFile("/home/nowcoder/Tao/bin/conf/log.yml");//加载yaml
     print_yaml(root, 0);
-    //TAO_LOG_INFO(TAO_LOG_ROOT())<<root;
+
+    TAO_LOG_INFO(TAO_LOG_ROOT())<<root.Scalar();
+}
+
+void test_config(){
+    TAO_LOG_INFO(TAO_LOG_ROOT())<<"before: "<<g_int_value_config->getValue();
+    TAO_LOG_INFO(TAO_LOG_ROOT())<<"before: "<<g_int_value_config->toString();
+
+    YAML::Node root = YAML::LoadFile("/home/nowcoder/Tao/bin/conf/log.yml");
+    tao::Config::LoadFromYaml(root);
+
+    TAO_LOG_INFO(TAO_LOG_ROOT())<<"after: "<<g_int_value_config->getValue();
+    TAO_LOG_INFO(TAO_LOG_ROOT())<<"after: "<<g_int_value_config->toString();
 }
 
 int main(int argc, char** argv){
-    TAO_LOG_INFO(TAO_LOG_ROOT()) << g_int_value_config->getValue();
-    TAO_LOG_INFO(TAO_LOG_ROOT()) << g_int_value_config->toString();
-    test_yaml();
+    //TAO_LOG_INFO(TAO_LOG_ROOT()) << g_int_value_config->getValue();
+    //TAO_LOG_INFO(TAO_LOG_ROOT()) << g_int_value_config->toString();
+
+    //test_yaml();
+    test_config();
     return 0;
 }
