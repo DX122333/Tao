@@ -6,5 +6,5 @@ CXX_FLAGS = -fPIC
 
 CXX_DEFINES = -Dtao_EXPORTS
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/home/nowcoder/Tao/. -I/usr/local/include 
 
