@@ -8,6 +8,9 @@ tao::ConfigVar<float>::ptr g_float_value_config = tao::Config::Lookup("system.va
 tao::ConfigVar<std::vector<int> >::ptr g_int_vec_value_config = 
     tao::Config::Lookup("system.int_vec", std::vector<int>{1, 2}, "system int vec");
 
+tao::ConfigVar<std::list<int> >::ptr g_int_list_value_config = 
+    tao::Config::Lookup("system.int_list", std::list<int>{1, 2}, "system int list");
+
 void print_yaml(const YAML::Node& node, int level){
     if(node.IsScalar()){
         TAO_LOG_INFO(TAO_LOG_ROOT())<<std::string(level * 4, ' ')
@@ -44,10 +47,16 @@ void test_config(){
     TAO_LOG_INFO(TAO_LOG_ROOT())<<"before: "<<g_int_value_config->getValue();
     TAO_LOG_INFO(TAO_LOG_ROOT())<<"before: "<<g_float_value_config->toString();
 
-    auto v = g_int_vec_value_config->getValue();
-    for(auto& i : v){
-        TAO_LOG_INFO(TAO_LOG_ROOT())<<"before int_vec: "<<i;
+#define XX(g_var, name, prefix) \
+    { \
+        auto& v = g_var->getValue();\
+        for(auto& i : v){ \
+            TAO_LOG_INFO(TAO_LOG_ROOT()) << #prefix " " #name ": "<<i; \
+        } \
     }
+
+    XX(g_int_vec_value_config, int_vec, before);
+    XX(g_int_list_value_config, int_list, before);
 
     YAML::Node root = YAML::LoadFile("/home/nowcoder/Tao/bin/conf/log.yml");
     tao::Config::LoadFromYaml(root);
@@ -55,11 +64,8 @@ void test_config(){
     TAO_LOG_INFO(TAO_LOG_ROOT())<<"after: "<<g_int_value_config->getValue();
     TAO_LOG_INFO(TAO_LOG_ROOT())<<"after: "<<g_float_value_config->toString();
 
-    v = g_int_vec_value_config->getValue();
-
-    for(auto& i : v){
-        TAO_LOG_INFO(TAO_LOG_ROOT())<<"after int_vec: "<<i;
-    }
+    XX(g_int_vec_value_config, int_vec, after);
+    XX(g_int_list_value_config, int_list, after);
 }
 
 int main(int argc, char** argv){
