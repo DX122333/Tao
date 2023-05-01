@@ -11,6 +11,18 @@ tao::ConfigVar<std::vector<int> >::ptr g_int_vec_value_config =
 tao::ConfigVar<std::list<int> >::ptr g_int_list_value_config = 
     tao::Config::Lookup("system.int_list", std::list<int>{1, 2}, "system int list");
 
+tao::ConfigVar<std::set<int> >::ptr g_int_set_value_config = 
+    tao::Config::Lookup("system.int_set", std::set<int>{1, 2}, "system int set");
+
+tao::ConfigVar<std::unordered_set<int> >::ptr g_int_uset_value_config =
+    tao::Config::Lookup("system.int_uset", std::unordered_set<int>{1,2}, "system int uset");
+
+tao::ConfigVar<std::map<std::string, int> >::ptr g_str_int_map_value_config =
+    tao::Config::Lookup("system.str_int_map", std::map<std::string, int>{{"k",2}}, "system str int map");
+
+tao::ConfigVar<std::unordered_map<std::string, int> >::ptr g_str_int_umap_value_config =
+    tao::Config::Lookup("system.str_int_umap", std::unordered_map<std::string, int>{{"k",2}}, "system str int map");
+
 void print_yaml(const YAML::Node& node, int level){
     if(node.IsScalar()){
         TAO_LOG_INFO(TAO_LOG_ROOT())<<std::string(level * 4, ' ')
@@ -53,10 +65,25 @@ void test_config(){
         for(auto& i : v){ \
             TAO_LOG_INFO(TAO_LOG_ROOT()) << #prefix " " #name ": "<<i; \
         } \
+        TAO_LOG_INFO(TAO_LOG_ROOT()) << #prefix " " #name " yaml: "<<g_var->toString();\
+    }
+
+#define XX_M(g_var, name, prefix) \
+    { \
+        auto& v = g_var->getValue(); \
+        for(auto& i : v) { \
+            TAO_LOG_INFO(TAO_LOG_ROOT()) << #prefix " " #name ": {" \
+                    << i.first << " - " << i.second << "}"; \
+        } \
+        TAO_LOG_INFO(TAO_LOG_ROOT()) << #prefix " " #name " yaml: " << g_var->toString(); \
     }
 
     XX(g_int_vec_value_config, int_vec, before);
     XX(g_int_list_value_config, int_list, before);
+    XX(g_int_set_value_config, int_set, before);
+    XX(g_int_uset_value_config, int_uset, before);
+    XX_M(g_str_int_map_value_config, str_int_map, before);
+    XX_M(g_str_int_umap_value_config, str_int_umap, before);
 
     YAML::Node root = YAML::LoadFile("/home/nowcoder/Tao/bin/conf/log.yml");
     tao::Config::LoadFromYaml(root);
@@ -66,6 +93,10 @@ void test_config(){
 
     XX(g_int_vec_value_config, int_vec, after);
     XX(g_int_list_value_config, int_list, after);
+    XX(g_int_set_value_config, int_set, after);
+    XX(g_int_uset_value_config, int_uset, after);
+    XX_M(g_str_int_map_value_config, str_int_map, after);
+    XX_M(g_str_int_umap_value_config, str_int_umap, after);
 }
 
 int main(int argc, char** argv){
