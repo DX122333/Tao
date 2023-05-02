@@ -33,3 +33,18 @@ system:
             k2: 20
             k3: 10
             k2: 20
+
+class:
+      person:
+            name: tao
+            age: 31
+            sex: true
+      map:
+            tao01:
+                  name: tao01
+                  age: 18
+                  sex: false
+            tao02:
+                  name: tao02
+                  age: 21
+                  sex: true
