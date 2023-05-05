@@ -96,9 +96,11 @@
  */
 #define TAO_LOG_NAME(name) tao::LoggerMgr::GetInstance()->getLogger(name)
 
+
 namespace tao{
 
 class Logger;
+class LoggerManager;
 
 //日志级别
 class LogLevel{
@@ -113,6 +115,7 @@ public:
     };
 
     static const char* ToString(LogLevel::Level level);
+    static LogLevel::Level FromString(const std::string& str);
 };
 
 //日志事件
@@ -188,9 +191,11 @@ public:
         virtual void format(std::ostream& os, std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event)=0;
     };
     void init();
+    bool isError() const { return m_error; }
 private:
     std::string m_pattern;
     std::vector<FormatItem::ptr> m_items;
+    bool m_error = false;
 };
 
 //日志输出地
@@ -211,6 +216,7 @@ protected:
 
 //日志器
 class Logger:public std::enable_shared_from_this<Logger>{
+friend class LoggerManager;
 public:
     typedef std::shared_ptr<Logger> ptr;
     
@@ -225,16 +231,22 @@ public:
 
     void addAppender(LogAppender::ptr);
     void delAppender(LogAppender::ptr);
+    void clearAppenders();
 
     LogLevel::Level getLevel()const{return m_level;}
     void setLevel(LogLevel::Level val){m_level = val;}
 
     const std::string& getName()const{return m_name;}
+
+    void setFormatter(LogFormatter::ptr val);
+    void setFormatter(const std::string& val);
+    LogFormatter::ptr getFormatter();
 private:
     std::string m_name;             //日志名称
     LogLevel::Level m_level;        //日志级别，只有满足日志级别的才会被输出
     std::list<LogAppender::ptr> m_appenders; //Appender集合
     LogFormatter::ptr m_formatter;
+    Logger::ptr m_root;
 };
 
 //输出到控制台的Appender
@@ -250,6 +262,7 @@ private:
 class FileLogAppender: public LogAppender{
 public:
     typedef std::shared_ptr<FileLogAppender> ptr;
+    FileLogAppender(){}
     FileLogAppender(const std::string& filename);
     virtual void log(Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event) override;
     bool reopen();

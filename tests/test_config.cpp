@@ -85,7 +85,7 @@ void test_config(){
     XX_M(g_str_int_map_value_config, str_int_map, before);
     XX_M(g_str_int_umap_value_config, str_int_umap, before);
 
-    YAML::Node root = YAML::LoadFile("/home/nowcoder/Tao/bin/conf/log.yml");
+    YAML::Node root = YAML::LoadFile("/home/nowcoder/Tao/bin/conf/test.yml");
     tao::Config::LoadFromYaml(root);
 
     TAO_LOG_INFO(TAO_LOG_ROOT())<<"after: "<<g_int_value_config->getValue();
