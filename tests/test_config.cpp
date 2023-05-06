@@ -181,10 +181,27 @@ void test_class(){
 
 }
 
+void test_log() {
+    static tao::Logger::ptr system_log = TAO_LOG_NAME("system");
+    TAO_LOG_INFO(system_log) << "hello system" << std::endl;
+    std::cout << tao::LoggerMgr::GetInstance()->toYamlString() << std::endl;
+    YAML::Node root = YAML::LoadFile("/home/nowcoder/Tao/bin/conf/test.yml");
+    tao::Config::LoadFromYaml(root);
+    std::cout << "=============" << std::endl;
+    std::cout << tao::LoggerMgr::GetInstance()->toYamlString() << std::endl;
+    std::cout << "=============" << std::endl;
+    std::cout << root << std::endl;
+    TAO_LOG_INFO(system_log) << "hello system" << std::endl;
+
+    system_log->setFormatter("%d - %m%n");
+    TAO_LOG_INFO(system_log) << "hello system" << std::endl;
+}
+
 int main(int argc, char** argv){
     //test_yaml();
     //test_config();
+    //test_class();
 
-    test_class();
+    test_log();
     return 0;
 }
