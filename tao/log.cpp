@@ -335,6 +335,15 @@ LogFormatter::LogFormatter(const std::string& pattern)
         init();
 }
 
+void LogAppender::setFormatter(LogFormatter::ptr val){
+    m_formatter = val;
+    if(m_formatter) {
+        m_hasFormatter = true;
+    } else {
+        m_hasFormatter = false;
+    }
+}
+
 std::string LogFormatter:: format(Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event){
     std::stringstream ss;
     for(auto& i: m_items){
@@ -358,7 +367,7 @@ Logger::Logger(const std::string& name)
 
 void Logger::addAppender(LogAppender::ptr appender){
     if(!appender->getFormatter()){
-        appender->setFormatter(m_formatter);
+        appender->m_formatter = m_formatter;
     }
     m_appenders.push_back(appender);
 }
@@ -379,6 +388,12 @@ void Logger::clearAppenders() {
 
 void Logger::setFormatter(LogFormatter::ptr val){
     m_formatter = val;
+
+    for(auto& i : m_appenders){
+        if(!i->m_hasFormatter){
+            i->m_formatter = m_formatter;
+        }
+    }
 }
 void Logger::setFormatter(const std::string& val){
     tao::LogFormatter::ptr new_val(new tao::LogFormatter(val));
@@ -386,7 +401,8 @@ void Logger::setFormatter(const std::string& val){
         std::cout<<"Logger setFormatter name = "<<m_name<<" value = "<<val<<" invalid formatter"<<std::endl;
         return;
     }
-    m_formatter = new_val;
+    //m_formatter = new_val;
+    setFormatter(new_val);
 }
 LogFormatter::ptr Logger::getFormatter(){
     return m_formatter;
@@ -560,6 +576,7 @@ struct LogDefine{
 
 };
 
+/*
 template<>
 class LexicalCast<std::string, LogDefine> {
 public:
@@ -653,17 +670,43 @@ public:
         return ss.str();
     }
 };
+*/
 
-/*
+
 template<>
 class LexicalCast<std::set<LogDefine>, std::string> {
 public:
     std::string operator()(const std::set<LogDefine>& v){
         YAML::Node node;
         for(auto& i : v){
-            
+            YAML::Node n;
+            n["name"] = i.name;
+            n["level"] = LogLevel::ToString(i.level);
+            if(i.formatter.empty()){
+                n["level"] = i.formatter;
+            }
+
+            for(auto& a : i.appenders){
+                YAML::Node na;
+                if(a.type == 1){
+                    na["type"] = "FileLogAppender";
+                    na["file"] = a.file;
+                }else if(a.type == 2){
+                    na["type"] = "StdoutLogAppender";
+                }
+                na["level"] = LogLevel::ToString(a.level);
+                
+                if(!a.formatter.empty()){
+                    na["formatter"] = a.formatter;
+                }
+
+                n["appenders"].push_back(na);
+            }
+            node.push_back(n);
         }
-        
+        std::stringstream ss;
+        ss<<node;
+        return ss.str();
     }
 };
 
@@ -699,13 +742,13 @@ public:
                     LogAppenderDefine lad;
                     if(type == "FileLogAppender"){
                         lad.type = 1;
-                        if(!n["file"].IsDefined()){
+                        if(!a["file"].IsDefined()){
                             std::cout<<"log config error: fileappender file is null, "<<a<<std::endl;
                             continue;
                         }
-                        lad.file = n["file"].as<std::string>();
+                        lad.file = a["file"].as<std::string>();
                         if(n["formatter"].IsDefined()){
-                            lad.formatter = n["formatter"].as<std::string>();
+                            lad.formatter = a["formatter"].as<std::string>();
                         }
                     }else if(type == "StdoutLogAppender"){
                         lad.type = 2;
@@ -722,7 +765,7 @@ public:
         return vec;
     }
 };
-*/
+
 tao::ConfigVar<std::set<LogDefine> >::ptr g_log_defines =
     tao::Config::Lookup("logs", std::set<LogDefine>(), "logs config");
 
@@ -737,7 +780,7 @@ struct LogIniter{
                 tao::Logger::ptr logger;
                 if(it == old_value.end()){
                     //新增的logger
-                    logger.reset(new tao::Logger(i.name));
+                    logger = TAO_LOG_NAME(i.name);
                 } else {
                     if(!(i==*it)){
                         //修改的logger
@@ -757,6 +800,14 @@ struct LogIniter{
                         ap.reset(new StdoutLogAppender);
                     }
                     ap->setLevel(a.level);
+                    if(!a.formatter.empty()){
+                        LogFormatter::ptr fmt(new LogFormatter(a.formatter));
+                        if(!fmt->isError()){
+                            ap->setFormatter(fmt);
+                        }else{
+                            std::cout<<"log.name="<<i.name<<" appender type="<<a.type<<" formatter="<<a.formatter<<" is invalid"<<std::endl;
+                        }
+                    }
                     logger->addAppender(ap);
                 }
             }
@@ -770,6 +821,66 @@ struct LogIniter{
                 }
             }    
         });
+        /*g_log_defines->addListener([](const std::set<LogDefine>& old_value,
+                    const std::set<LogDefine>& new_value){
+            TAO_LOG_INFO(TAO_LOG_ROOT()) << "on_logger_conf_changed";
+            for(auto& i : new_value) {
+                auto it = old_value.find(i);
+                tao::Logger::ptr logger;
+                if(it == old_value.end()) {
+                    //新增logger
+                    logger = TAO_LOG_NAME(i.name);
+                } else {
+                    if(!(i == *it)) {
+                        //修改的logger
+                        logger = TAO_LOG_NAME(i.name);
+                    } else {
+                        continue;
+                    }
+                }
+                logger->setLevel(i.level);
+                //std::cout << "** " << i.name << " level=" << i.level
+                //<< "  " << logger << std::endl;
+                if(!i.formatter.empty()) {
+                    logger->setFormatter(i.formatter);
+                }
+
+                logger->clearAppenders();
+                for(auto& a : i.appenders) {
+                    tao::LogAppender::ptr ap;
+                    if(a.type == 1) {
+                        ap.reset(new FileLogAppender(a.file));
+                    } else if(a.type == 2) {
+                        if(!tao::EnvMgr::GetInstance()->has("d")) {
+                            ap.reset(new StdoutLogAppender);
+                        } else {
+                            continue;
+                        }
+                    }
+                    ap->setLevel(a.level);
+                    if(!a.formatter.empty()) {
+                        LogFormatter::ptr fmt(new LogFormatter(a.formatter));
+                        if(!fmt->isError()) {
+                            ap->setFormatter(fmt);
+                        } else {
+                            std::cout << "log.name=" << i.name << " appender type=" << a.type
+                                      << " formatter=" << a.formatter << " is invalid" << std::endl;
+                        }
+                    }
+                    logger->addAppender(ap);
+                }
+            }
+
+            for(auto& i : old_value) {
+                auto it = new_value.find(i);
+                if(it == new_value.end()) {
+                    //删除logger
+                    auto logger = TAO_LOG_NAME(i.name);
+                    logger->setLevel((LogLevel::Level)0);
+                    logger->clearAppenders();
+                }
+            }
+        });*/
     }
 };
 

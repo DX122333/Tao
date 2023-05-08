@@ -201,12 +201,13 @@ private:
 
 //日志输出地
 class LogAppender{
+friend class Logger;
 public:
     typedef std::shared_ptr<LogAppender> ptr;
     virtual ~LogAppender(){}
     virtual void log(std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event)=0; //纯虚函数，子类必须要实现这个方法
 
-    void setFormatter(LogFormatter::ptr val){m_formatter = val;}
+    void setFormatter(LogFormatter::ptr val);
     LogFormatter::ptr getFormatter() const {return m_formatter;}
     LogLevel::Level getLevel() const {return m_level;}
     void setLevel(LogLevel::Level val) {m_level = val;}
@@ -255,23 +256,25 @@ private:
 
 //输出到控制台的Appender
 class StdoutLogAppender: public LogAppender{
+friend class Logger;
 public:
     typedef std::shared_ptr<StdoutLogAppender> ptr;
     virtual void log(Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event) override;
-    std::string toYamlString();
+    std::string toYamlString() override;
 private: 
 
 };
 
 //定义输出到文件的Appender
 class FileLogAppender: public LogAppender{
+friend class Logger;
 public:
     typedef std::shared_ptr<FileLogAppender> ptr;
     FileLogAppender(){}
     FileLogAppender(const std::string& filename);
     virtual void log(Logger::ptr logger, LogLevel::Level level, LogEvent::ptr event) override;
     bool reopen();
-    std::string toYamlString();
+    std::string toYamlString() override;
 private:
     std::string m_filename;
     std::ofstream m_filestream;
