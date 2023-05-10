@@ -270,8 +270,8 @@ public:
     }
 
     std::string toString() override {
-        try
-        {
+       
+        try{
            //return boost::lexical_cast<std::string>(m_val); 
            //ToStr()：重载了小括号的模板类对象
            return ToStr()(m_val);   
@@ -279,10 +279,10 @@ public:
         catch(std::exception& e)
         {
             TAO_LOG_ERROR(TAO_LOG_ROOT())<<"ConfigVar:toString exception"
-                <<e.what()<<"convert: "<<typeid(m_val).name()<<"to string";
+                <<e.what()<<"convert: "<<typeid(m_val).name()<<" to string";
         }
         
-        return "";
+        //return "";
     }
 
     bool fromString(const std::string& val) override {
@@ -294,8 +294,8 @@ public:
         }
         catch(std::exception& e)
         {
-            TAO_LOG_ERROR(TAO_LOG_ROOT())<<"ConfigVar:fromString exception"
-                <<e.what()<<"convert: string to"<<typeid(m_val).name();
+            TAO_LOG_ERROR(TAO_LOG_ROOT())<<"ConfigVar:fromString exception "
+                <<e.what()<<" convert: string to "<<typeid(m_val).name();
         }
 
         return false;
@@ -311,6 +311,7 @@ public:
         }
         m_val = v;
     }
+
     std::string getTypeName() const override { return typeid(T).name();}
 
     void addListener(uint64_t key, on_change_cb cb){

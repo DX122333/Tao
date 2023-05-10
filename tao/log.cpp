@@ -409,14 +409,16 @@ LogFormatter::ptr Logger::getFormatter(){
 }
 
 void Logger::log(LogLevel::Level level, LogEvent::ptr event){
-    auto self = shared_from_this();
+    if(level >= m_level){
+        auto self = shared_from_this();
 
-    if(!m_appenders.empty()){
-        for(auto& i : m_appenders){
-            i->log(Logger::ptr(), level, event);
+        if(!m_appenders.empty()){
+            for(auto& i : m_appenders){
+                i->log(Logger::ptr(), level, event);
+            }
+        }else if(m_root){
+            m_root->log(level, event);
         }
-    }else if(m_root){
-        m_root->log(level, event);
     }
 }
 void Logger::debug(LogEvent::ptr event){
@@ -576,7 +578,7 @@ struct LogDefine{
 
 };
 
-/*
+
 template<>
 class LexicalCast<std::string, LogDefine> {
 public:
@@ -670,9 +672,9 @@ public:
         return ss.str();
     }
 };
-*/
 
 
+/*
 template<>
 class LexicalCast<std::set<LogDefine>, std::string> {
 public:
@@ -765,6 +767,7 @@ public:
         return vec;
     }
 };
+*/
 
 tao::ConfigVar<std::set<LogDefine> >::ptr g_log_defines =
     tao::Config::Lookup("logs", std::set<LogDefine>(), "logs config");
