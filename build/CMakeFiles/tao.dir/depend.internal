@@ -75,6 +75,12 @@ CMakeFiles/tao.dir/tao/log.cpp.o
  /usr/local/include/yaml-cpp/stlemitter.h
  /usr/local/include/yaml-cpp/traits.h
  /usr/local/include/yaml-cpp/yaml.h
+CMakeFiles/tao.dir/tao/thread.cpp.o
+ /home/nowcoder/Tao/tao/log.h
+ /home/nowcoder/Tao/tao/singleton.h
+ /home/nowcoder/Tao/tao/thread.cpp
+ /home/nowcoder/Tao/tao/thread.h
+ /home/nowcoder/Tao/tao/util.h
 CMakeFiles/tao.dir/tao/util.cpp.o
  /home/nowcoder/Tao/tao/util.cpp
  /home/nowcoder/Tao/tao/util.h

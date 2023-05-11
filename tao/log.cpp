@@ -462,9 +462,9 @@ bool FileLogAppender::reopen(){
 void StdoutLogAppender:: log(std::shared_ptr<Logger> logger, LogLevel::Level level, LogEvent::ptr event) {
     if(level >= m_level){
         //std::string str = m_formatter->format(logger, level, event);
-        std::cout<<"...STDOUTLOGAPPENDER..."<<std::endl;
+        //std::cout<<"...STDOUTLOGAPPENDER..."<<std::endl;
         std::cout<<m_formatter->format(logger, level, event);
-        std::cout<<"...STDOUTLOGAPPENDER..."<<std::endl;
+        //std::cout<<"...STDOUTLOGAPPENDER..."<<std::endl;
     }
 }
 

@@ -114,6 +114,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named test_thread
+
+# Build rule for target.
+test_thread: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_thread
+.PHONY : test_thread
+
+# fast build rule for target.
+test_thread/fast:
+	$(MAKE) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/build
+.PHONY : test_thread/fast
+
+#=============================================================================
 # Target rules for targets named tao
 
 # Build rule for target.
@@ -206,6 +219,33 @@ tao/log.cpp.s:
 	$(MAKE) -f CMakeFiles/tao.dir/build.make CMakeFiles/tao.dir/tao/log.cpp.s
 .PHONY : tao/log.cpp.s
 
+tao/thread.o: tao/thread.cpp.o
+
+.PHONY : tao/thread.o
+
+# target to build an object file
+tao/thread.cpp.o:
+	$(MAKE) -f CMakeFiles/tao.dir/build.make CMakeFiles/tao.dir/tao/thread.cpp.o
+.PHONY : tao/thread.cpp.o
+
+tao/thread.i: tao/thread.cpp.i
+
+.PHONY : tao/thread.i
+
+# target to preprocess a source file
+tao/thread.cpp.i:
+	$(MAKE) -f CMakeFiles/tao.dir/build.make CMakeFiles/tao.dir/tao/thread.cpp.i
+.PHONY : tao/thread.cpp.i
+
+tao/thread.s: tao/thread.cpp.s
+
+.PHONY : tao/thread.s
+
+# target to generate assembly for a file
+tao/thread.cpp.s:
+	$(MAKE) -f CMakeFiles/tao.dir/build.make CMakeFiles/tao.dir/tao/thread.cpp.s
+.PHONY : tao/thread.cpp.s
+
 tao/util.o: tao/util.cpp.o
 
 .PHONY : tao/util.o
@@ -287,6 +327,33 @@ tests/test_config.cpp.s:
 	$(MAKE) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/tests/test_config.cpp.s
 .PHONY : tests/test_config.cpp.s
 
+tests/test_thread.o: tests/test_thread.cpp.o
+
+.PHONY : tests/test_thread.o
+
+# target to build an object file
+tests/test_thread.cpp.o:
+	$(MAKE) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/tests/test_thread.cpp.o
+.PHONY : tests/test_thread.cpp.o
+
+tests/test_thread.i: tests/test_thread.cpp.i
+
+.PHONY : tests/test_thread.i
+
+# target to preprocess a source file
+tests/test_thread.cpp.i:
+	$(MAKE) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/tests/test_thread.cpp.i
+.PHONY : tests/test_thread.cpp.i
+
+tests/test_thread.s: tests/test_thread.cpp.s
+
+.PHONY : tests/test_thread.s
+
+# target to generate assembly for a file
+tests/test_thread.cpp.s:
+	$(MAKE) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/tests/test_thread.cpp.s
+.PHONY : tests/test_thread.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -295,6 +362,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... test_thread"
 	@echo "... tao"
 	@echo "... test_config"
 	@echo "... test"
@@ -304,6 +372,9 @@ help:
 	@echo "... tao/log.o"
 	@echo "... tao/log.i"
 	@echo "... tao/log.s"
+	@echo "... tao/thread.o"
+	@echo "... tao/thread.i"
+	@echo "... tao/thread.s"
 	@echo "... tao/util.o"
 	@echo "... tao/util.i"
 	@echo "... tao/util.s"
@@ -313,6 +384,9 @@ help:
 	@echo "... tests/test_config.o"
 	@echo "... tests/test_config.i"
 	@echo "... tests/test_config.s"
+	@echo "... tests/test_thread.o"
+	@echo "... tests/test_thread.i"
+	@echo "... tests/test_thread.s"
 .PHONY : help
 
 
