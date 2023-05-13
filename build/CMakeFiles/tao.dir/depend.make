@@ -5,6 +5,7 @@ CMakeFiles/tao.dir/tao/config.cpp.o: ../tao/config.cpp
 CMakeFiles/tao.dir/tao/config.cpp.o: ../tao/config.h
 CMakeFiles/tao.dir/tao/config.cpp.o: ../tao/log.h
 CMakeFiles/tao.dir/tao/config.cpp.o: ../tao/singleton.h
+CMakeFiles/tao.dir/tao/config.cpp.o: ../tao/thread.h
 CMakeFiles/tao.dir/tao/config.cpp.o: ../tao/util.h
 CMakeFiles/tao.dir/tao/config.cpp.o: /usr/local/include/yaml-cpp/binary.h
 CMakeFiles/tao.dir/tao/config.cpp.o: /usr/local/include/yaml-cpp/dll.h
@@ -42,6 +43,7 @@ CMakeFiles/tao.dir/tao/log.cpp.o: ../tao/config.h
 CMakeFiles/tao.dir/tao/log.cpp.o: ../tao/log.cpp
 CMakeFiles/tao.dir/tao/log.cpp.o: ../tao/log.h
 CMakeFiles/tao.dir/tao/log.cpp.o: ../tao/singleton.h
+CMakeFiles/tao.dir/tao/log.cpp.o: ../tao/thread.h
 CMakeFiles/tao.dir/tao/log.cpp.o: ../tao/util.h
 CMakeFiles/tao.dir/tao/log.cpp.o: /usr/local/include/yaml-cpp/binary.h
 CMakeFiles/tao.dir/tao/log.cpp.o: /usr/local/include/yaml-cpp/dll.h

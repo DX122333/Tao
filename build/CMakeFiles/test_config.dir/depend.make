@@ -4,6 +4,7 @@
 CMakeFiles/test_config.dir/tests/test_config.cpp.o: ../tao/config.h
 CMakeFiles/test_config.dir/tests/test_config.cpp.o: ../tao/log.h
 CMakeFiles/test_config.dir/tests/test_config.cpp.o: ../tao/singleton.h
+CMakeFiles/test_config.dir/tests/test_config.cpp.o: ../tao/thread.h
 CMakeFiles/test_config.dir/tests/test_config.cpp.o: ../tao/util.h
 CMakeFiles/test_config.dir/tests/test_config.cpp.o: ../tests/test_config.cpp
 CMakeFiles/test_config.dir/tests/test_config.cpp.o: /usr/local/include/yaml-cpp/binary.h

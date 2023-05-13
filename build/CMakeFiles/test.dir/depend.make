@@ -3,6 +3,7 @@
 
 CMakeFiles/test.dir/tests/test.cpp.o: ../tao/log.h
 CMakeFiles/test.dir/tests/test.cpp.o: ../tao/singleton.h
+CMakeFiles/test.dir/tests/test.cpp.o: ../tao/thread.h
 CMakeFiles/test.dir/tests/test.cpp.o: ../tao/util.h
 CMakeFiles/test.dir/tests/test.cpp.o: ../tests/test.cpp
 

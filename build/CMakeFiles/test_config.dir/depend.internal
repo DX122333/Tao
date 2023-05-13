@@ -5,6 +5,7 @@ CMakeFiles/test_config.dir/tests/test_config.cpp.o
  /home/nowcoder/Tao/tao/config.h
  /home/nowcoder/Tao/tao/log.h
  /home/nowcoder/Tao/tao/singleton.h
+ /home/nowcoder/Tao/tao/thread.h
  /home/nowcoder/Tao/tao/util.h
  /home/nowcoder/Tao/tests/test_config.cpp
  /usr/local/include/yaml-cpp/binary.h

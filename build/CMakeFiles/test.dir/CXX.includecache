@@ -37,8 +37,28 @@ singleton.h
 /home/nowcoder/Tao/tao/singleton.h
 util.h
 /home/nowcoder/Tao/tao/util.h
+thread.h
+/home/nowcoder/Tao/tao/thread.h
 
 /home/nowcoder/Tao/tao/singleton.h
+
+/home/nowcoder/Tao/tao/thread.h
+thread
+-
+pthread.h
+-
+functional
+-
+memory
+-
+sys/types.h
+-
+bits/types.h
+-
+semaphore.h
+-
+stdint.h
+-
 
 /home/nowcoder/Tao/tao/util.h
 pthread.h

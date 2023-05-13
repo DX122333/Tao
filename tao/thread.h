@@ -120,11 +120,44 @@ private:
     bool m_locked;
 };
 
+class Mutex{
+public:
+    typedef ScopedLockImp<Mutex> Lock;
+    Mutex(){
+        pthread_mutex_init(&m_mutex, nullptr);
+    }
+
+    ~Mutex(){
+        pthread_mutex_destroy(&m_mutex);
+    }
+
+    void lock(){
+        pthread_mutex_lock(&m_mutex);
+    }
+
+    void unlock(){
+        pthread_mutex_unlock(&m_mutex);
+    }
+
+private:
+    pthread_mutex_t m_mutex;
+};
+
+//与主逻辑无关，只是为了测试Mutex
+class NullMutex{
+public:
+    typedef ScopedLockImp<Mutex> Lock;
+    NullMutex(){}
+    ~NullMutex(){}
+    void lock(){}
+    void unlock(){}
+};
+
 class RWMutex{
 public:
-    typedef ReadScopedLockImpl<RWMutex> ReadLokc;
+    typedef ReadScopedLockImpl<RWMutex> ReadLock;
     typedef WriteScopedLockImpl<RWMutex> WriteLock;
-    
+
     RWMutex(){
         pthread_rwlock_init(&m_lock, nullptr);
     }
@@ -146,6 +179,19 @@ public:
     }
 private:
     pthread_rwlock_t m_lock;
+};
+
+class NullRWMutex{
+public:
+    typedef ReadScopedLockImpl<NullMutex> ReadLock;
+    typedef WriteScopedLockImpl<NullMutex> WriteLock;
+
+    NullRWMutex(){}
+    ~NullRWMutex(){}
+
+    void rdlock(){}
+    void wrlock(){}
+    void unlock(){}
 };
 
 class Thread{
