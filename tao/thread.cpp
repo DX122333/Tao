@@ -7,6 +7,26 @@ namespace tao{
 static thread_local Thread* t_thread = nullptr;
 static thread_local std::string t_thread_name = "UNKNOW";
 
+Semaphore:: Semaphore(uint32_t count){
+    if(sem_init(&m_semaphore, 0, count)){
+        throw std::logic_error("sem_init error");
+    }
+}
+Semaphore:: ~Semaphore(){
+    sem_destroy(&m_semaphore);
+}
+
+void Semaphore::wait(){
+    if(sem_wait(&m_semaphore)){
+        throw std::logic_error("sem_wait error");
+    }
+}
+void Semaphore::notify(){
+    if(sem_post(&m_semaphore)){
+        throw std::logic_error("sem_post error");
+    }
+}
+
 //线程相关日志统一交给system日志器处理
 static tao::Logger::ptr g_logger = TAO_LOG_NAME("system");
 
@@ -37,6 +57,8 @@ Thread::Thread(std::function<void()> cb, const std::string& name)
         TAO_LOG_ERROR(g_logger)<<"pthread_create thread fail, rt="<<rt<<" name="<<name;
         throw std::logic_error("pthread_create error");
     }
+
+    m_semaphore.wait();
 }
 Thread::~Thread(){
     if(m_thread){
@@ -52,6 +74,8 @@ void* Thread::run(void* arg){
 
     std::function<void()> cb;
     cb.swap(thread->m_cb);
+
+    thread->m_semaphore.notify();
 
     cb();
     return 0;

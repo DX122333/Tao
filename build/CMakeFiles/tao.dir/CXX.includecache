@@ -113,6 +113,10 @@ sys/types.h
 -
 bits/types.h
 -
+semaphore.h
+-
+stdint.h
+-
 
 /home/nowcoder/Tao/tao/util.cpp
 util.h

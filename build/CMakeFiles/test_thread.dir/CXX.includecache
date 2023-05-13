@@ -95,6 +95,10 @@ sys/types.h
 -
 bits/types.h
 -
+semaphore.h
+-
+stdint.h
+-
 
 /home/nowcoder/Tao/tao/util.h
 pthread.h
@@ -111,6 +115,8 @@ stdio.h
 /home/nowcoder/Tao/tests/test_thread.cpp
 ../tao/tao.h
 /home/nowcoder/Tao/tao/tao.h
+unistd.h
+-
 
 /usr/local/include/yaml-cpp/binary.h
 string
