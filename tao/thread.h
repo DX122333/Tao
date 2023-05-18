@@ -69,6 +69,9 @@ public:
         m_locked = true;
     }
 
+    ~ReadScopedLockImpl(){
+        unlock();
+    }
     void lock(){
         if(!m_locked){
             m_mutex.rdlock();

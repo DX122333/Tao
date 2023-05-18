@@ -793,7 +793,7 @@ tao::ConfigVar<std::set<LogDefine> >::ptr g_log_defines =
 //全局变量在main之前构造
 struct LogIniter{
     LogIniter(){
-        g_log_defines->addListener(0xF1E231, [](const std::set<LogDefine>& old_value, 
+        g_log_defines->addListener([](const std::set<LogDefine>& old_value, 
                         const std::set<LogDefine>& new_value) {
             TAO_LOG_INFO(TAO_LOG_ROOT()) << "on_logger_conf_changed";
             for(auto& i : new_value){
