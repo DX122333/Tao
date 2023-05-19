@@ -1,6 +1,7 @@
 /home/nowcoder/Tao/build/CMakeFiles/rebuild_cache.dir
-/home/nowcoder/Tao/build/CMakeFiles/edit_cache.dir
+/home/nowcoder/Tao/build/CMakeFiles/test.dir
+/home/nowcoder/Tao/build/CMakeFiles/test_config.dir
 /home/nowcoder/Tao/build/CMakeFiles/test_thread.dir
 /home/nowcoder/Tao/build/CMakeFiles/tao.dir
-/home/nowcoder/Tao/build/CMakeFiles/test_config.dir
-/home/nowcoder/Tao/build/CMakeFiles/test.dir
+/home/nowcoder/Tao/build/CMakeFiles/test_util.dir
+/home/nowcoder/Tao/build/CMakeFiles/edit_cache.dir

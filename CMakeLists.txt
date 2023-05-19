@@ -43,5 +43,10 @@ add_dependencies(test_thread tao)
 #force_redefine_file_macro_for_sources(test_thread) #__FILE__
 target_link_libraries(test_thread ${LIB_LIB})
 
+add_executable(test_util tests/test_util.cpp)
+add_dependencies(test_util tao)
+#force_redefine_file_macro_for_sources(test_util) #__FILE__
+target_link_libraries(test_util ${LIB_LIB})
+
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)

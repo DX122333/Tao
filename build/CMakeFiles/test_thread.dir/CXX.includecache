@@ -72,6 +72,16 @@ util.h
 thread.h
 /home/nowcoder/Tao/tao/thread.h
 
+/home/nowcoder/Tao/tao/macro.h
+string.h
+-
+assert.h
+-
+util.h
+/home/nowcoder/Tao/tao/util.h
+log.h
+/home/nowcoder/Tao/tao/log.h
+
 /home/nowcoder/Tao/tao/singleton.h
 
 /home/nowcoder/Tao/tao/tao.h
@@ -85,6 +95,8 @@ singleton.h
 /home/nowcoder/Tao/tao/singleton.h
 util.h
 /home/nowcoder/Tao/tao/util.h
+macro.h
+/home/nowcoder/Tao/tao/macro.h
 
 /home/nowcoder/Tao/tao/thread.h
 thread
@@ -114,6 +126,10 @@ sys/types.h
 sys/syscall.h
 -
 stdio.h
+-
+vector
+-
+string
 -
 
 /home/nowcoder/Tao/tests/test_thread.cpp

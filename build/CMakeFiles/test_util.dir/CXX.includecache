@@ -72,7 +72,31 @@ util.h
 thread.h
 /home/nowcoder/Tao/tao/thread.h
 
+/home/nowcoder/Tao/tao/macro.h
+string.h
+-
+assert.h
+-
+util.h
+/home/nowcoder/Tao/tao/util.h
+log.h
+/home/nowcoder/Tao/tao/log.h
+
 /home/nowcoder/Tao/tao/singleton.h
+
+/home/nowcoder/Tao/tao/tao.h
+config.h
+/home/nowcoder/Tao/tao/config.h
+log.h
+/home/nowcoder/Tao/tao/log.h
+thread.h
+/home/nowcoder/Tao/tao/thread.h
+singleton.h
+/home/nowcoder/Tao/tao/singleton.h
+util.h
+/home/nowcoder/Tao/tao/util.h
+macro.h
+/home/nowcoder/Tao/tao/macro.h
 
 /home/nowcoder/Tao/tao/thread.h
 thread
@@ -108,13 +132,11 @@ vector
 string
 -
 
-/home/nowcoder/Tao/tests/test_config.cpp
-../tao/config.h
-/home/nowcoder/Tao/tao/config.h
-../tao/log.h
-/home/nowcoder/Tao/tao/log.h
-yaml-cpp/yaml.h
-/home/nowcoder/Tao/tests/yaml-cpp/yaml.h
+/home/nowcoder/Tao/tests/test_util.cpp
+../tao/tao.h
+/home/nowcoder/Tao/tao/tao.h
+assert.h
+-
 
 /usr/local/include/yaml-cpp/binary.h
 string

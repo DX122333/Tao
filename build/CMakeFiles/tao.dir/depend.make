@@ -83,6 +83,9 @@ CMakeFiles/tao.dir/tao/thread.cpp.o: ../tao/thread.cpp
 CMakeFiles/tao.dir/tao/thread.cpp.o: ../tao/thread.h
 CMakeFiles/tao.dir/tao/thread.cpp.o: ../tao/util.h
 
+CMakeFiles/tao.dir/tao/util.cpp.o: ../tao/log.h
+CMakeFiles/tao.dir/tao/util.cpp.o: ../tao/singleton.h
+CMakeFiles/tao.dir/tao/util.cpp.o: ../tao/thread.h
 CMakeFiles/tao.dir/tao/util.cpp.o: ../tao/util.cpp
 CMakeFiles/tao.dir/tao/util.cpp.o: ../tao/util.h
 

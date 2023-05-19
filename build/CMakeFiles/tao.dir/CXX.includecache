@@ -125,6 +125,10 @@ stdint.h
 /home/nowcoder/Tao/tao/util.cpp
 util.h
 /home/nowcoder/Tao/tao/util.h
+execinfo.h
+-
+log.h
+/home/nowcoder/Tao/tao/log.h
 
 /home/nowcoder/Tao/tao/util.h
 pthread.h
@@ -136,6 +140,10 @@ sys/types.h
 sys/syscall.h
 -
 stdio.h
+-
+vector
+-
+string
 -
 
 /usr/local/include/yaml-cpp/binary.h

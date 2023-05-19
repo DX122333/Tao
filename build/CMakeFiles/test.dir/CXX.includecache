@@ -71,6 +71,10 @@ sys/syscall.h
 -
 stdio.h
 -
+vector
+-
+string
+-
 
 /home/nowcoder/Tao/tests/test.cpp
 iostream
