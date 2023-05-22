@@ -2,6 +2,7 @@
 #include <execinfo.h>
 
 #include "log.h"
+#include "fiber.h"
 
 namespace tao{
 
@@ -12,7 +13,7 @@ pid_t GetThreadId(){
 }
 
 u_int32_t GetFiberId(){
-    return 0;
+    return tao::Fiber::GetFiberId();
 }
 
 void Backtrace(std::vector<std::string>& bt, int size, int skip){

@@ -140,6 +140,19 @@ test_config/fast:
 .PHONY : test_config/fast
 
 #=============================================================================
+# Target rules for targets named test_fiber
+
+# Build rule for target.
+test_fiber: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_fiber
+.PHONY : test_fiber
+
+# fast build rule for target.
+test_fiber/fast:
+	$(MAKE) -f CMakeFiles/test_fiber.dir/build.make CMakeFiles/test_fiber.dir/build
+.PHONY : test_fiber/fast
+
+#=============================================================================
 # Target rules for targets named test_thread
 
 # Build rule for target.
@@ -204,6 +217,33 @@ tao/config.s: tao/config.cpp.s
 tao/config.cpp.s:
 	$(MAKE) -f CMakeFiles/tao.dir/build.make CMakeFiles/tao.dir/tao/config.cpp.s
 .PHONY : tao/config.cpp.s
+
+tao/fiber.o: tao/fiber.cpp.o
+
+.PHONY : tao/fiber.o
+
+# target to build an object file
+tao/fiber.cpp.o:
+	$(MAKE) -f CMakeFiles/tao.dir/build.make CMakeFiles/tao.dir/tao/fiber.cpp.o
+.PHONY : tao/fiber.cpp.o
+
+tao/fiber.i: tao/fiber.cpp.i
+
+.PHONY : tao/fiber.i
+
+# target to preprocess a source file
+tao/fiber.cpp.i:
+	$(MAKE) -f CMakeFiles/tao.dir/build.make CMakeFiles/tao.dir/tao/fiber.cpp.i
+.PHONY : tao/fiber.cpp.i
+
+tao/fiber.s: tao/fiber.cpp.s
+
+.PHONY : tao/fiber.s
+
+# target to generate assembly for a file
+tao/fiber.cpp.s:
+	$(MAKE) -f CMakeFiles/tao.dir/build.make CMakeFiles/tao.dir/tao/fiber.cpp.s
+.PHONY : tao/fiber.cpp.s
 
 tao/log.o: tao/log.cpp.o
 
@@ -340,6 +380,33 @@ tests/test_config.cpp.s:
 	$(MAKE) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/tests/test_config.cpp.s
 .PHONY : tests/test_config.cpp.s
 
+tests/test_fiber.o: tests/test_fiber.cpp.o
+
+.PHONY : tests/test_fiber.o
+
+# target to build an object file
+tests/test_fiber.cpp.o:
+	$(MAKE) -f CMakeFiles/test_fiber.dir/build.make CMakeFiles/test_fiber.dir/tests/test_fiber.cpp.o
+.PHONY : tests/test_fiber.cpp.o
+
+tests/test_fiber.i: tests/test_fiber.cpp.i
+
+.PHONY : tests/test_fiber.i
+
+# target to preprocess a source file
+tests/test_fiber.cpp.i:
+	$(MAKE) -f CMakeFiles/test_fiber.dir/build.make CMakeFiles/test_fiber.dir/tests/test_fiber.cpp.i
+.PHONY : tests/test_fiber.cpp.i
+
+tests/test_fiber.s: tests/test_fiber.cpp.s
+
+.PHONY : tests/test_fiber.s
+
+# target to generate assembly for a file
+tests/test_fiber.cpp.s:
+	$(MAKE) -f CMakeFiles/test_fiber.dir/build.make CMakeFiles/test_fiber.dir/tests/test_fiber.cpp.s
+.PHONY : tests/test_fiber.cpp.s
+
 tests/test_thread.o: tests/test_thread.cpp.o
 
 .PHONY : tests/test_thread.o
@@ -401,15 +468,19 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
+	@echo "... edit_cache"
 	@echo "... test"
 	@echo "... test_config"
+	@echo "... test_fiber"
 	@echo "... test_thread"
 	@echo "... tao"
 	@echo "... test_util"
-	@echo "... edit_cache"
 	@echo "... tao/config.o"
 	@echo "... tao/config.i"
 	@echo "... tao/config.s"
+	@echo "... tao/fiber.o"
+	@echo "... tao/fiber.i"
+	@echo "... tao/fiber.s"
 	@echo "... tao/log.o"
 	@echo "... tao/log.i"
 	@echo "... tao/log.s"
@@ -425,6 +496,9 @@ help:
 	@echo "... tests/test_config.o"
 	@echo "... tests/test_config.i"
 	@echo "... tests/test_config.s"
+	@echo "... tests/test_fiber.o"
+	@echo "... tests/test_fiber.i"
+	@echo "... tests/test_fiber.s"
 	@echo "... tests/test_thread.o"
 	@echo "... tests/test_thread.i"
 	@echo "... tests/test_thread.s"

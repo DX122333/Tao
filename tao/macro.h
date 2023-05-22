@@ -31,7 +31,7 @@
         TAO_LOG_ERROR(TAO_LOG_ROOT()) << "ASSERTION: " #x \
             << "\n" << w \
             << "\nbacktrace:\n" \
-            << sylar::BacktraceToString(100, 2, "    "); \
+            << tao::BacktraceToString(100, 2, "    "); \
         assert(x); \
     }
 

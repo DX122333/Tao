@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/tao.dir/tao/log.cpp.o"
+  "CMakeFiles/tao.dir/tao/fiber.cpp.o"
   "CMakeFiles/tao.dir/tao/util.cpp.o"
   "CMakeFiles/tao.dir/tao/config.cpp.o"
   "CMakeFiles/tao.dir/tao/thread.cpp.o"

@@ -84,9 +84,33 @@ CMakeFiles/tao.dir/tao/log.cpp.o.provides: CMakeFiles/tao.dir/tao/log.cpp.o.requ
 CMakeFiles/tao.dir/tao/log.cpp.o.provides.build: CMakeFiles/tao.dir/tao/log.cpp.o
 
 
+CMakeFiles/tao.dir/tao/fiber.cpp.o: CMakeFiles/tao.dir/flags.make
+CMakeFiles/tao.dir/tao/fiber.cpp.o: ../tao/fiber.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nowcoder/Tao/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/tao.dir/tao/fiber.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tao.dir/tao/fiber.cpp.o -c /home/nowcoder/Tao/tao/fiber.cpp
+
+CMakeFiles/tao.dir/tao/fiber.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tao.dir/tao/fiber.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nowcoder/Tao/tao/fiber.cpp > CMakeFiles/tao.dir/tao/fiber.cpp.i
+
+CMakeFiles/tao.dir/tao/fiber.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tao.dir/tao/fiber.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nowcoder/Tao/tao/fiber.cpp -o CMakeFiles/tao.dir/tao/fiber.cpp.s
+
+CMakeFiles/tao.dir/tao/fiber.cpp.o.requires:
+
+.PHONY : CMakeFiles/tao.dir/tao/fiber.cpp.o.requires
+
+CMakeFiles/tao.dir/tao/fiber.cpp.o.provides: CMakeFiles/tao.dir/tao/fiber.cpp.o.requires
+	$(MAKE) -f CMakeFiles/tao.dir/build.make CMakeFiles/tao.dir/tao/fiber.cpp.o.provides.build
+.PHONY : CMakeFiles/tao.dir/tao/fiber.cpp.o.provides
+
+CMakeFiles/tao.dir/tao/fiber.cpp.o.provides.build: CMakeFiles/tao.dir/tao/fiber.cpp.o
+
+
 CMakeFiles/tao.dir/tao/util.cpp.o: CMakeFiles/tao.dir/flags.make
 CMakeFiles/tao.dir/tao/util.cpp.o: ../tao/util.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nowcoder/Tao/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/tao.dir/tao/util.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nowcoder/Tao/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/tao.dir/tao/util.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tao.dir/tao/util.cpp.o -c /home/nowcoder/Tao/tao/util.cpp
 
 CMakeFiles/tao.dir/tao/util.cpp.i: cmake_force
@@ -110,7 +134,7 @@ CMakeFiles/tao.dir/tao/util.cpp.o.provides.build: CMakeFiles/tao.dir/tao/util.cp
 
 CMakeFiles/tao.dir/tao/config.cpp.o: CMakeFiles/tao.dir/flags.make
 CMakeFiles/tao.dir/tao/config.cpp.o: ../tao/config.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nowcoder/Tao/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/tao.dir/tao/config.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nowcoder/Tao/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/tao.dir/tao/config.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tao.dir/tao/config.cpp.o -c /home/nowcoder/Tao/tao/config.cpp
 
 CMakeFiles/tao.dir/tao/config.cpp.i: cmake_force
@@ -134,7 +158,7 @@ CMakeFiles/tao.dir/tao/config.cpp.o.provides.build: CMakeFiles/tao.dir/tao/confi
 
 CMakeFiles/tao.dir/tao/thread.cpp.o: CMakeFiles/tao.dir/flags.make
 CMakeFiles/tao.dir/tao/thread.cpp.o: ../tao/thread.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nowcoder/Tao/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/tao.dir/tao/thread.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nowcoder/Tao/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/tao.dir/tao/thread.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tao.dir/tao/thread.cpp.o -c /home/nowcoder/Tao/tao/thread.cpp
 
 CMakeFiles/tao.dir/tao/thread.cpp.i: cmake_force
@@ -159,6 +183,7 @@ CMakeFiles/tao.dir/tao/thread.cpp.o.provides.build: CMakeFiles/tao.dir/tao/threa
 # Object files for target tao
 tao_OBJECTS = \
 "CMakeFiles/tao.dir/tao/log.cpp.o" \
+"CMakeFiles/tao.dir/tao/fiber.cpp.o" \
 "CMakeFiles/tao.dir/tao/util.cpp.o" \
 "CMakeFiles/tao.dir/tao/config.cpp.o" \
 "CMakeFiles/tao.dir/tao/thread.cpp.o"
@@ -167,12 +192,13 @@ tao_OBJECTS = \
 tao_EXTERNAL_OBJECTS =
 
 ../lib/libtao.so: CMakeFiles/tao.dir/tao/log.cpp.o
+../lib/libtao.so: CMakeFiles/tao.dir/tao/fiber.cpp.o
 ../lib/libtao.so: CMakeFiles/tao.dir/tao/util.cpp.o
 ../lib/libtao.so: CMakeFiles/tao.dir/tao/config.cpp.o
 ../lib/libtao.so: CMakeFiles/tao.dir/tao/thread.cpp.o
 ../lib/libtao.so: CMakeFiles/tao.dir/build.make
 ../lib/libtao.so: CMakeFiles/tao.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nowcoder/Tao/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared library ../lib/libtao.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nowcoder/Tao/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX shared library ../lib/libtao.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tao.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -181,6 +207,7 @@ CMakeFiles/tao.dir/build: ../lib/libtao.so
 .PHONY : CMakeFiles/tao.dir/build
 
 CMakeFiles/tao.dir/requires: CMakeFiles/tao.dir/tao/log.cpp.o.requires
+CMakeFiles/tao.dir/requires: CMakeFiles/tao.dir/tao/fiber.cpp.o.requires
 CMakeFiles/tao.dir/requires: CMakeFiles/tao.dir/tao/util.cpp.o.requires
 CMakeFiles/tao.dir/requires: CMakeFiles/tao.dir/tao/config.cpp.o.requires
 CMakeFiles/tao.dir/requires: CMakeFiles/tao.dir/tao/thread.cpp.o.requires
